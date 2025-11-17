@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>DoughLab Pro | A Calculadora de Massa Inteligente para Pizza, Pão e Levain Perfeitos</title>
+    <meta name="description" content="Domine suas massas com o DoughLab Pro. O aplicativo definitivo com uma calculadora inteligente, seu laboratório pessoal de panificação e um companheiro para seu levain. Saia do achismo e faça fornadas incríveis." />
+    <meta name="keywords" content="calculadora de massa, massa de pizza, receita de pão, levain, fermentação natural, hidratação, panificação, massa madre, pizzaiolo, padeiro amador, padeiro profissional" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="DoughLab Pro | A Calculadora de Massa Inteligente para Pizza, Pão e Levain Perfeitos">
+    <meta property="og:description" content="Domine suas massas com o DoughLab Pro. O aplicativo definitivo com uma calculadora inteligente, seu laboratório pessoal de panificação e um companheiro para seu levain.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1619495764355-635a6a0b1dec?q=80&w=1287&auto=format&fit=crop&fm=webp">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DoughLab Pro | A Calculadora de Massa Inteligente para Pizza, Pão e Levain Perfeitos">
+    <meta name="twitter:description" content="Domine suas massas com o DoughLab Pro. O aplicativo definitivo com uma calculadora inteligente, seu laboratório pessoal de panificação e um companheiro para seu levain.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1619495764355-635a6a0b1dec?q=80&w=1287&auto=format&fit=crop&fm=webp">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#6BCB3E',
+              'primary-hover': '#5ABF30',
+              secondary: '#F4F7FA',
+              support: '#3478F6',
+              dark: {
+                bg: '#0F131A',
+                card: '#171D27',
+                text: '#E5E9F1',
+                'text-secondary': '#A0AEC0',
+              },
+              light: {
+                text: '#1A202C',
+                'text-secondary': '#4A5568',
+              }
+            },
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+            animation: {
+              'hero-bg-float': 'hero-bg-float 15s ease-in-out infinite',
+            },
+            keyframes: {
+              'hero-bg-float': {
+                '0%, 100%': { transform: 'translateY(0) scale(1.05)' },
+                '50%': { transform: 'translateY(-10px) scale(1.05)' },
+              },
+            },
+          },
+        },
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body class="bg-white dark:bg-dark-bg">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
