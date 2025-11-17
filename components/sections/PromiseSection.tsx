@@ -9,24 +9,33 @@ const CheckIcon = () => (
 
 const LearnSection = () => {
   const { t } = useLanguage();
+  const topicsString = t('learn_topics');
+  let topics: string[] = [];
+  if (topicsString && topicsString.startsWith('[')) {
+    try {
+        topics = JSON.parse(topicsString);
+    } catch(e) {
+        console.error("Failed to parse learn topics", e);
+    }
+  }
 
   return (
-    <section id="learn" className="py-20 sm:py-28 bg-white dark:bg-dark-bg">
+    <section id="learn" className="py-20 sm:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-light-text dark:text-dark-text tracking-tight">
-            {t('learn.title')}
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight">
+            {t('learn_title')}
           </h2>
-          <p className="mt-4 text-lg text-light-text-secondary dark:text-dark-text-secondary">
-            {t('learn.summary')}
+          <p className="mt-4 text-lg text-text-subtle">
+            {t('learn_summary')}
           </p>
         </div>
         <div className="mt-12 max-w-3xl mx-auto">
             <ul className="space-y-4">
-                {(t('learn.topics') as unknown as string[]).map((topic: string) => (
+                {topics.map((topic: string) => (
                     <li key={topic} className="flex items-start text-left">
                         <CheckIcon />
-                        <span className="text-light-text-secondary dark:text-dark-text-secondary">
+                        <span className="text-text-subtle">
                             {topic}
                         </span>
                     </li>

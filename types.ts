@@ -1,9 +1,3 @@
-export type Theme = 'light' | 'dark';
-
-export interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: () => void;
-}
 
 export type Language = 'pt' | 'en' | 'es';
 

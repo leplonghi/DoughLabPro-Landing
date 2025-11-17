@@ -1,6 +1,7 @@
 
+
 import React from 'react';
-import { DoughLabLogo, FOOTER_LINKS } from '../constants';
+import { DoughLabLogo, FOOTER_LINKS_DATA } from '../constants';
 import { useLanguage } from '../hooks/useLanguage';
 
 // Social Icons
@@ -35,44 +36,44 @@ const Footer = () => {
 
 
   return (
-    <footer className="bg-secondary dark:bg-dark-card border-t border-gray-200 dark:border-gray-800">
+    <footer className="bg-secondary border-t border-gray-200">
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
           <DoughLabLogo />
-          <p className="mt-4 max-w-md text-light-text-secondary dark:text-dark-text-secondary">
-            {t('footer.tagline')}
+          <p className="mt-4 max-w-md text-text-subtle">
+            {t('footer_tagline')}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
-            {FOOTER_LINKS.map((link) => (
+            {FOOTER_LINKS_DATA.map((link) => (
                 <a 
-                    key={link.labelKey}
+                    key={link.key}
                     href={link.href}
-                    className="text-sm text-light-text-secondary dark:text-dark-text-secondary hover:text-primary dark:hover:text-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-card"
+                    className="text-sm text-text-subtle hover:text-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
                 >
-                    {t(link.labelKey)}
+                    {t(link.key)}
                 </a>
             ))}
           </div>
           
           <div className="mt-8">
-              <h4 className="text-sm font-semibold text-light-text dark:text-dark-text mb-3">
-                  {t('footer.share')}
+              <h4 className="text-sm font-semibold text-text-main mb-3">
+                  {t('footer_share')}
               </h4>
               <div className="flex justify-center space-x-6">
-                 <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label={t('footer.shareOnTwitter')} className="text-gray-400 hover:text-primary dark:hover:text-primary transition-all duration-200 transform hover:scale-110 active:scale-100 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-card">
+                 <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label={t('footer_shareOnTwitter')} className="text-gray-400 hover:text-primary transition-all duration-200 transform hover:scale-110 active:scale-100 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary">
                      <TwitterIcon className="w-6 h-6" />
                  </a>
-                 <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label={t('footer.shareOnFacebook')} className="text-gray-400 hover:text-primary dark:hover:text-primary transition-all duration-200 transform hover:scale-110 active:scale-100 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-card">
+                 <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label={t('footer_shareOnFacebook')} className="text-gray-400 hover:text-primary transition-all duration-200 transform hover:scale-110 active:scale-100 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary">
                      <FacebookIcon className="w-6 h-6" />
                  </a>
-                 <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label={t('footer.shareOnLinkedIn')} className="text-gray-400 hover:text-primary dark:hover:text-primary transition-all duration-200 transform hover:scale-110 active:scale-100 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-card">
+                 <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label={t('footer_shareOnLinkedIn')} className="text-gray-400 hover:text-primary transition-all duration-200 transform hover:scale-110 active:scale-100 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary">
                      <LinkedInIcon className="w-6 h-6" />
                  </a>
               </div>
           </div>
 
-          <p className="mt-8 text-xs text-gray-400 dark:text-gray-500">
-             {t('footer.copyright', { year: currentYear.toString() })}
+          <p className="mt-8 text-xs text-gray-400">
+             {t('footer_copyright', { year: currentYear.toString() })}
           </p>
         </div>
       </div>

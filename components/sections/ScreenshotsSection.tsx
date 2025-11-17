@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { SCREENSHOTS } from '../../constants';
 import { useLanguage } from '../../hooks/useLanguage';
@@ -6,13 +7,13 @@ import { useLanguage } from '../../hooks/useLanguage';
 const ScreenshotsSection = () => {
   const { t } = useLanguage();
   return (
-    <section id="screenshots" className="py-20 sm:py-28 bg-secondary dark:bg-dark-card/50 overflow-hidden">
+    <section id="screenshots" className="py-20 sm:py-28 bg-secondary/50 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-light-text dark:text-dark-text tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight">
             {t('screenshots.title')}
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-light-text-secondary dark:text-dark-text-secondary">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-text-subtle">
             {t('screenshots.subtitle')}
           </p>
         </div>
@@ -26,7 +27,7 @@ const ScreenshotsSection = () => {
               <img 
                 src={screenshot.src} 
                 alt={screenshot.alt} 
-                className="rounded-lg shadow-xl w-full h-auto object-cover aspect-[9/16] border-4 border-white dark:border-dark-bg"
+                className="rounded-lg shadow-xl w-full h-auto object-cover aspect-[9/16] border-4 border-white"
                 loading="lazy"
                 decoding="async"
               />

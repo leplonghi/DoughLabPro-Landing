@@ -11,13 +11,13 @@ const LevainPetSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="levain-pet" className="py-20 sm:py-28 bg-secondary dark:bg-dark-card/50">
+    <section id="levain-pet" className="py-20 sm:py-28 bg-secondary/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-light-text dark:text-dark-text tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight">
             {t('levainPet.title')}
           </h2>
-          <p className="mt-4 text-lg text-light-text-secondary dark:text-dark-text-secondary">
+          <p className="mt-4 text-lg text-text-subtle">
             {t('levainPet.subtitle')}
           </p>
         </div>
@@ -27,7 +27,7 @@ const LevainPetSection = () => {
                 {(t('levainPet.bullets') as unknown as string[]).map((bullet: string) => (
                     <li key={bullet} className="flex items-start text-left">
                         <CheckIcon />
-                        <span className="text-light-text-secondary dark:text-dark-text-secondary">
+                        <span className="text-text-subtle">
                             {bullet}
                         </span>
                     </li>
@@ -36,13 +36,13 @@ const LevainPetSection = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-lg font-semibold text-light-text dark:text-dark-text italic max-w-2xl mx-auto">
+          <p className="text-lg font-semibold text-text-main italic max-w-2xl mx-auto">
             “{t('levainPet.fomo')}”
           </p>
           <div className="mt-8">
              <a
                 href="#pricing"
-                className="inline-block bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 rounded-lg transition-transform transform hover:scale-105 active:scale-95 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-card/50"
+                className="inline-block bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 rounded-lg transition-transform transform hover:scale-105 active:scale-95 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
               >
                 {t('levainPet.cta')}
               </a>

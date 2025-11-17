@@ -1,40 +1,53 @@
-import React, { createContext, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, ReactNode, useCallback } from 'react';
 import { Language, LanguageContextType } from '../types';
-import { landingTexts } from '../landingTexts';
-import { detectLandingLang, setLandingLang } from '../lang';
-
-const getNestedTranslation = (obj: any, path: string): string => {
-    if (!obj || typeof path !== 'string') return path;
-    const value = path.split('.').reduce((acc, part) => acc && acc[part], obj);
-    return value !== undefined ? value : path;
-};
-
-const lang = detectLandingLang();
-const translations = landingTexts[lang];
+import { loadTranslations, detectUserLanguage } from '../i18n';
 
 export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [language, setLanguageState] = useState<Language>('en'); // Default to 'en' initially
+  const [translations, setTranslations] = useState<{ [key: string]: string }>({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadLanguage = useCallback(async (lang: Language) => {
+    setIsLoading(true);
+    const data = await loadTranslations(lang);
+    setTranslations(data);
+    setLanguageState(lang);
+    document.documentElement.lang = lang;
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    const detectedLang = detectUserLanguage();
+    handleLoadLanguage(detectedLang);
+  }, [handleLoadLanguage]);
+
+  const setLanguage = (lang: Language) => {
+    if (lang !== language) {
+        handleLoadLanguage(lang);
+    }
+  };
 
   const t = (key: string, options?: { [key: string]: string | number }): string => {
-    let translation = getNestedTranslation(translations, key);
-    if (translation === undefined || translation === null) {
-        return key;
-    }
+    // Return the key itself if translations are not yet loaded
+    if (isLoading) return key; 
+    
+    let translation = translations[key] || key;
     
     if (options) {
-        Object.keys(options).forEach(optKey => {
-            const regex = new RegExp(`\\{${optKey}\\}`, 'g');
-            translation = translation.replace(regex, String(options[optKey]));
-        });
+      Object.keys(options).forEach(optKey => {
+        const regex = new RegExp(`\\{${optKey}\\}`, 'g');
+        translation = translation.replace(regex, String(options[optKey]));
+      });
     }
     
     return translation;
   };
 
   const value: LanguageContextType = {
-    language: lang,
-    setLanguage: setLandingLang,
+    language,
+    setLanguage,
     t,
   };
 

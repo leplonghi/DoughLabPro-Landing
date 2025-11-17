@@ -1,6 +1,6 @@
 import React from 'react';
 // FIX: Import types for constants.
-import type { Screenshot, Testimonial } from './types';
+import type { Screenshot } from './types';
 
 export const DoughLabLogo = ({ className }: { className?: string }) => (
   <div className={`flex items-center font-bold text-2xl ${className}`}>
@@ -17,29 +17,28 @@ export const DoughLabLogo = ({ className }: { className?: string }) => (
       <path d="M28.0833 24.6667C28.0833 24.6667 26.5833 21.1667 20 21.1667C13.4167 21.1667 11.9167 24.6667 11.9167 24.6667" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M30.5833 29.5C30.5833 29.5 31.5833 25.75 20 25.75C8.41667 25.75 9.41667 29.5 9.41667 29.5C9.41667 29.5 11.9167 34.1667 20 34.1667C28.0833 34.1667 30.5833 29.5 30.5833 29.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
-    <span className="text-light-text dark:text-dark-text">DoughLab <span className="text-primary">Pro</span></span>
+    <span className="text-text-main">DoughLab <span className="text-primary">Pro</span></span>
   </div>
 );
 
-export const NAV_LINKS = [
-  { href: '#for-whom', labelKey: 'nav.forWhom' },
-  { href: '#calculator', labelKey: 'nav.calculator' },
-  { href: '#mylab', labelKey: 'nav.myLab' },
-  { href: '#learn', labelKey: 'nav.learn' },
-  { href: '#pro-tools', labelKey: 'nav.proTools' },
-  { href: '#community', labelKey: 'nav.community' },
-  { href: '#pricing', labelKey: 'nav.pricing' },
+export const NAV_LINKS_DATA = [
+  { href: '#for-whom', key: 'nav_forWhom' },
+  { href: '#calculator', key: 'nav_calculator' },
+  { href: '#mylab', key: 'nav_myLab' },
+  { href: '#learn', key: 'nav_learn' },
+  { href: '#pro-tools', key: 'nav_proTools' },
+  { href: '#community', key: 'nav_community' },
+  { href: '#pricing', key: 'nav_pricing' },
 ];
 
 export const HERO_BACKGROUND_IMAGE = {
     src: "https://images.unsplash.com/photo-1619495764355-635a6a0b1dec?q=80&w=1287&auto=format&fit=crop&fm=webp",
-    altKey: "hero.imageAlt"
+    altKey: "hero_imageAlt"
 };
 
-// FIX: Add missing constants to resolve import errors.
 export const PROMISE_IMAGE = {
     src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1381&auto=format&fit=crop&fm=webp",
-    altKey: "howItWorks.imageAlt"
+    altKey: "howItWorks_imageAlt"
 };
 
 const CalculatorIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -77,35 +76,35 @@ const OvenIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
-export const FEATURES_LIST = [
+export const FEATURES_LIST_DATA = [
     {
-        titleKey: 'features.list.calculator.title',
-        descriptionKey: 'features.list.calculator.description',
+        titleKey: 'features_list_calculator_title',
+        descriptionKey: 'features_list_calculator_description',
         Icon: CalculatorIcon,
     },
     {
-        titleKey: 'features.list.mylab.title',
-        descriptionKey: 'features.list.mylab.description',
+        titleKey: 'features_list_mylab_title',
+        descriptionKey: 'features_list_mylab_description',
         Icon: LabIcon,
     },
     {
-        titleKey: 'features.list.learn.title',
-        descriptionKey: 'features.list.learn.description',
+        titleKey: 'features_list_learn_title',
+        descriptionKey: 'features_list_learn_description',
         Icon: BookIcon,
     },
     {
-        titleKey: 'features.list.assistant.title',
-        descriptionKey: 'features.list.assistant.description',
+        titleKey: 'features_list_assistant_title',
+        descriptionKey: 'features_list_assistant_description',
         Icon: AssistantIcon,
     },
     {
-        titleKey: 'features.list.pantry.title',
-        descriptionKey: 'features.list.pantry.description',
+        titleKey: 'features_list_pantry_title',
+        descriptionKey: 'features_list_pantry_description',
         Icon: PantryIcon,
     },
     {
-        titleKey: 'features.list.oven.title',
-        descriptionKey: 'features.list.oven.description',
+        titleKey: 'features_list_oven_title',
+        descriptionKey: 'features_list_oven_description',
         Icon: OvenIcon,
     },
 ];
@@ -133,51 +132,51 @@ export const SCREENSHOTS: Screenshot[] = [
     },
 ];
 
-export const TESTIMONIALS: Testimonial[] = [
+export const TESTIMONIALS_DATA = [
     {
         name: "Mariana Silva",
-        role: "socialProof.testimonials.mariana.role",
+        roleKey: "socialProof_testimonials_mariana_role",
         avatar: "https://i.pravatar.cc/150?img=1",
-        quoteKey: "socialProof.testimonials.mariana.quote",
+        quoteKey: "socialProof_testimonials_mariana_quote",
     },
     {
         name: "John Baker",
-        role: "socialProof.testimonials.john.role",
+        roleKey: "socialProof_testimonials_john_role",
         avatar: "https://i.pravatar.cc/150?img=2",
-        quoteKey: "socialProof.testimonials.john.quote",
+        quoteKey: "socialProof_testimonials_john_quote",
     },
     {
         name: "Carlos Pizzaiolo",
-        role: "socialProof.testimonials.carlos.role",
+        roleKey: "socialProof_testimonials_carlos_role",
         avatar: "https://i.pravatar.cc/150?img=3",
-        quoteKey: "socialProof.testimonials.carlos.quote",
+        quoteKey: "socialProof_testimonials_carlos_quote",
     },
 ];
 
-export const FAQ_ITEMS_KEYS = [
+export const FAQ_ITEMS_KEYS_DATA = [
     {
-        questionKey: "faq.items.q1.question",
-        answerKey: "faq.items.q1.answer",
+        questionKey: "faq_items_q1_question",
+        answerKey: "faq_items_q1_answer",
     },
     {
-        questionKey: "faq.items.q2.question",
-        answerKey: "faq.items.q2.answer",
+        questionKey: "faq_items_q2_question",
+        answerKey: "faq_items_q2_answer",
     },
     {
-        questionKey: "faq.items.q3.question",
-        answerKey: "faq.items.q3.answer",
+        questionKey: "faq_items_q3_question",
+        answerKey: "faq_items_q3_answer",
     },
     {
-        questionKey: "faq.items.q4.question",
-        answerKey: "faq.items.q4.answer",
+        questionKey: "faq_items_q4_question",
+        answerKey: "faq_items_q4_answer",
     },
 ];
 
-export const FOOTER_LINKS = [
-    { href: '#', labelKey: 'footer.links.calculator' },
-    { href: '#', labelKey: 'footer.links.learn' },
-    { href: '#', labelKey: 'footer.links.community' },
-    { href: '#', labelKey: 'footer.links.mylab' },
-    { href: '#', labelKey: 'footer.links.support' },
-    { href: '#', labelKey: 'footer.links.privacy' },
+export const FOOTER_LINKS_DATA = [
+    { href: '#calculator', key: 'footer_links_calculator' },
+    { href: '#learn', key: 'footer_links_learn' },
+    { href: '#community', key: 'footer_links_community' },
+    { href: '#mylab', key: 'footer_links_mylab' },
+    { href: '#support', key: 'footer_links_support' },
+    { href: '#privacy', key: 'footer_links_privacy' },
 ];

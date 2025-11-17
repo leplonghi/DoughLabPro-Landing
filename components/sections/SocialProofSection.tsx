@@ -1,11 +1,18 @@
 
+
 import React, { useState } from 'react';
-import { TESTIMONIALS } from '../../constants';
+import { TESTIMONIALS_DATA } from '../../constants';
 import { useLanguage } from '../../hooks/useLanguage';
-import { Testimonial } from '../../types';
+
+interface TestimonialData {
+    name: string;
+    roleKey: string;
+    avatar: string;
+    quoteKey: string;
+}
 
 // A type to handle the edited quote for the current session
-type DisplayTestimonial = Testimonial & { editedQuote?: string };
+type DisplayTestimonial = TestimonialData & { editedQuote?: string };
 
 // Modal Component for editing a testimonial
 const EditModal: React.FC<{
@@ -17,34 +24,34 @@ const EditModal: React.FC<{
 }> = ({ quote, onSave, onCancel, setQuote, t }) => {
     return (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" aria-modal="true" role="dialog" aria-labelledby="edit-modal-title">
-            <div className="bg-white dark:bg-dark-card rounded-lg shadow-xl w-full max-w-md p-6 animate-fade-in-up">
-                <h3 id="edit-modal-title" className="text-xl font-bold text-light-text dark:text-dark-text mb-4">
-                    {t('socialProof.editModal.title')}
+            <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 animate-fade-in-up">
+                <h3 id="edit-modal-title" className="text-xl font-bold text-text-main mb-4">
+                    {t('socialProof_editModal_title')}
                 </h3>
                 <div className="mb-4">
-                    <label htmlFor="quote" className="block text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary mb-1">
-                        {t('socialProof.editModal.label')}
+                    <label htmlFor="quote" className="block text-sm font-medium text-text-subtle mb-1">
+                        {t('socialProof_editModal_label')}
                     </label>
                     <textarea
                         id="quote"
                         value={quote}
                         onChange={(e) => setQuote(e.target.value)}
                         rows={5}
-                        className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-dark-bg text-light-text dark:text-dark-text focus:ring-primary focus:border-primary transition-colors"
+                        className="w-full p-2 border border-gray-300 rounded-md bg-white text-text-main focus:ring-primary focus:border-primary transition-colors"
                     />
                 </div>
                 <div className="flex justify-end space-x-4">
                     <button
                         onClick={onCancel}
-                        className="px-4 py-2 rounded-md text-light-text-secondary dark:text-dark-text-secondary hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-card"
+                        className="px-4 py-2 rounded-md text-text-subtle hover:bg-gray-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     >
-                        {t('socialProof.editModal.cancel')}
+                        {t('socialProof_editModal_cancel')}
                     </button>
                     <button
                         onClick={onSave}
-                        className="px-4 py-2 rounded-md bg-primary hover:bg-primary-hover text-white font-bold transition-all transform active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-card"
+                        className="px-4 py-2 rounded-md bg-primary hover:bg-primary-hover text-white font-bold transition-all transform active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     >
-                        {t('socialProof.editModal.save')}
+                        {t('socialProof_editModal_save')}
                     </button>
                 </div>
             </div>
@@ -63,7 +70,7 @@ const EditModal: React.FC<{
 
 const SocialProofSection = () => {
   const { t } = useLanguage();
-  const [testimonials, setTestimonials] = useState<DisplayTestimonial[]>(TESTIMONIALS);
+  const [testimonials, setTestimonials] = useState<DisplayTestimonial[]>(TESTIMONIALS_DATA);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [currentQuote, setCurrentQuote] = useState('');
@@ -96,14 +103,14 @@ const SocialProofSection = () => {
 
   return (
     <>
-      <section id="social-proof" className="py-20 sm:py-28 bg-secondary dark:bg-dark-card/50">
+      <section id="social-proof" className="py-20 sm:py-28 bg-secondary/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-light-text dark:text-dark-text tracking-tight">
-              {t('socialProof.title')}
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight">
+              {t('socialProof_title')}
             </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-light-text-secondary dark:text-dark-text-secondary">
-              {t('socialProof.subtitle')}
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-text-subtle">
+              {t('socialProof_subtitle')}
             </p>
           </div>
 
@@ -111,7 +118,7 @@ const SocialProofSection = () => {
             {testimonials.map((testimonial, index) => (
               <div 
                   key={index}
-                  className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-lg flex flex-col items-center text-center group relative"
+                  className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center group relative"
               >
                   <img 
                       src={testimonial.avatar}
@@ -120,20 +127,20 @@ const SocialProofSection = () => {
                       loading="lazy"
                       decoding="async"
                   />
-                  <blockquote className="text-lg text-light-text-secondary dark:text-dark-text-secondary italic flex-grow">
+                  <blockquote className="text-lg text-text-subtle italic flex-grow">
                       <p>“{testimonial.editedQuote || t(testimonial.quoteKey)}”</p>
                   </blockquote>
                   <div className="mt-4">
-                      <p className="font-bold text-light-text dark:text-dark-text">{testimonial.name}</p>
-                      <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">{t(testimonial.role)}</p>
+                      <p className="font-bold text-text-main">{testimonial.name}</p>
+                      <p className="text-sm text-text-subtle">{t(testimonial.roleKey)}</p>
                   </div>
                   <div className="absolute bottom-4 right-4">
                     <button
                         onClick={() => handleEditClick(index)}
-                        className="px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 focus:opacity-100 active:scale-95 transform focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-card"
+                        className="px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 focus:opacity-100 active:scale-95 transform focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                         aria-label={`Edit ${testimonial.name}'s testimonial`}
                     >
-                        {t('socialProof.editButton')}
+                        {t('socialProof_editButton')}
                     </button>
                   </div>
               </div>

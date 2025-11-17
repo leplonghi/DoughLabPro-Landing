@@ -9,20 +9,30 @@ const CheckIcon = () => (
 
 const ForWhomSection = () => {
   const { t } = useLanguage();
+  const profilesString = t('forWhom_profiles');
+  let profiles: string[] = [];
+  if (profilesString && profilesString.startsWith('[')) {
+    try {
+      profiles = JSON.parse(profilesString);
+    } catch (e) {
+      console.error("Failed to parse profiles", e);
+    }
+  }
+
   return (
-    <section id="for-whom" className="py-20 sm:py-28 bg-secondary dark:bg-dark-card/50">
+    <section id="for-whom" className="py-20 sm:py-28 bg-secondary/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-light-text dark:text-dark-text tracking-tight">
-            {t('forWhom.title')}
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight">
+            {t('forWhom_title')}
           </h2>
         </div>
         <div className="mt-12 max-w-3xl mx-auto">
             <ul className="space-y-4">
-                {(t('forWhom.profiles') as unknown as string[]).map((profile: string) => (
+                {profiles.map((profile: string) => (
                     <li key={profile} className="flex items-start text-left text-lg">
                         <CheckIcon />
-                        <span className="text-light-text-secondary dark:text-dark-text-secondary">
+                        <span className="text-text-subtle">
                             {profile}
                         </span>
                     </li>

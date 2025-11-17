@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { PROMISE_IMAGE } from '../../constants';
 import { useLanguage } from '../../hooks/useLanguage';
@@ -7,14 +8,14 @@ const ProblemSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="how-it-works" className="py-20 sm:py-28 bg-secondary dark:bg-dark-card/50">
+    <section id="how-it-works" className="py-20 sm:py-28 bg-secondary/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div className="text-center lg:text-left">
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-light-text dark:text-dark-text tracking-tight">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight">
                     {t('howItWorks.title')}
                 </h2>
-                <p className="mt-4 text-lg text-light-text-secondary dark:text-dark-text-secondary">
+                <p className="mt-4 text-lg text-text-subtle">
                     {t('howItWorks.copy')}
                 </p>
             </div>
