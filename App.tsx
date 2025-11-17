@@ -5,6 +5,7 @@ import HeroSection from './components/sections/HeroSection';
 import ForWhomSection from './components/sections/ForWhomSection';
 import CalculatorSection from './components/sections/CalculatorSection';
 import MyLabSection from './components/sections/MyLabSection';
+import LevainPetSection from './components/sections/LevainPetSection';
 import LearnSection from './components/sections/PromiseSection';
 import ProToolsSection from './components/sections/ProToolsSection';
 import CommunitySection from './components/sections/CommunitySection';
@@ -23,6 +24,7 @@ function App() {
           <ForWhomSection />
           <CalculatorSection />
           <MyLabSection />
+          <LevainPetSection />
           <LearnSection />
           <ProToolsSection />
           <CommunitySection />
