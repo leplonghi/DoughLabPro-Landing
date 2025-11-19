@@ -1,95 +1,105 @@
+
 import React from 'react';
 import { useLanguage } from '../../hooks/useLanguage';
 
-const CheckIcon = ({ className }: { className?: string }) => (
-    <svg className={`w-5 h-5 text-primary mr-3 flex-shrink-0 ${className}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7"></path>
+const CheckIcon = () => (
+    <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"></path>
     </svg>
 );
 
-const PricingSection = () => {
+const DashIcon = () => (
+    <div className="w-5 h-0.5 bg-gray-200 rounded-full"></div>
+);
+
+interface ComparisonRow {
+    key: string;
+    free: string | boolean;
+    pro: string | boolean;
+    translate?: boolean;
+}
+
+const ComparisonSection = () => {
     const { t } = useLanguage();
-    const planOrder = ['free', 'pro', 'levain'];
+
+    const rows: ComparisonRow[] = [
+        { key: 'levain', free: 'comparison_feature_levain_limit', pro: 'comparison_feature_levain_unlimited' },
+        { key: 'styles', free: 'comparison_feature_styles_limit', pro: 'comparison_feature_styles_all' },
+        { key: 'log', free: 'comparison_feature_log_basic', pro: 'comparison_feature_mylab_full' },
+        { key: 'history', free: '1 saved batch', pro: 'Unlimited history', translate: false },
+        { key: 'export', free: false, pro: 'comparison_feature_export' },
+        { key: 'ai', free: false, pro: 'comparison_feature_ai' },
+        { key: 'insights', free: false, pro: 'comparison_feature_insights' },
+        { key: 'alerts', free: false, pro: 'comparison_feature_alerts' },
+        { key: 'sync', free: false, pro: 'comparison_feature_sync' },
+        { key: 'analytics', free: false, pro: 'comparison_feature_analytics' },
+        { key: 'compare', free: false, pro: 'comparison_feature_compare' },
+        { key: 'consistency', free: false, pro: 'comparison_feature_consistency' },
+    ];
 
     return (
-        <section id="pricing" className="py-20 sm:py-28 bg-white">
+        <section id="comparison" className="py-20 bg-white">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight">
-                        {t('pricing_title')}
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                    <h2 className="text-3xl font-extrabold text-text-main tracking-tight">
+                        {t('comparison_title')}
                     </h2>
                     <p className="mt-4 text-lg text-text-subtle">
-                        {t('pricing_subtitle')}
+                        {t('comparison_subtitle')}
                     </p>
                 </div>
 
-                <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
-                    {planOrder.map(planKey => {
-                        const isRecommended = t(`pricing_plans_${planKey}_isRecommended`) === 'true';
-                        const featuresString = t(`pricing_plans_${planKey}_features`);
-                        let features: string[] = [];
-                        if (featuresString && featuresString.startsWith('[')) {
-                            try {
-                                features = JSON.parse(featuresString);
-                            } catch(e) {
-                                console.error(`Failed to parse features for plan ${planKey}`, e);
-                            }
-                        }
-
-                        return (
-                            <div 
-                                key={planKey} 
-                                className={`relative flex flex-col p-8 rounded-2xl shadow-lg transition-transform transform hover:-translate-y-2 ${
-                                    isRecommended 
-                                        ? 'bg-white border-2 border-primary' 
-                                        : 'bg-secondary'
-                                }`}
-                            >
-                                {isRecommended && (
-                                    <div className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
-                                        <span className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold text-white bg-primary">
-                                            {t(`pricing_plans_${planKey}_recommendation`)}
-                                        </span>
-                                    </div>
-                                )}
-                                
-                                <h3 className="text-2xl font-bold text-center text-text-main">{t(`pricing_plans_${planKey}_title`)}</h3>
-                                
-                                <div className="mt-4 text-center">
-                                    <span className="text-4xl font-extrabold text-text-main tracking-tight">{t(`pricing_plans_${planKey}_price`)}</span>
-                                    <span className="text-base font-medium text-text-subtle">{t(`pricing_plans_${planKey}_period`)}</span>
-                                </div>
-                                
-                                <p className="mt-4 text-center text-text-subtle h-12">{t(`pricing_plans_${planKey}_headline`)}</p>
-
-                                <ul className="mt-8 space-y-4 text-left flex-grow">
-                                    {features.map((feature: string, index: number) => (
-                                        <li key={index} className="flex items-start">
-                                            <CheckIcon />
-                                            <span className="text-text-subtle">{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <div className="mt-8">
-                                    <a 
-                                        href="#final-cta"
-                                        className={`w-full text-center inline-block py-3 px-8 rounded-lg font-bold transition-all transform active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
-                                            isRecommended 
-                                                ? 'bg-primary hover:bg-primary-hover text-white focus-visible:ring-primary focus-visible:ring-offset-white' 
-                                                : 'bg-white text-primary hover:bg-primary/10 border border-primary focus-visible:ring-primary focus-visible:ring-offset-secondary'
-                                        }`}
-                                    >
-                                        {t(`pricing_plans_${planKey}_cta`)}
-                                    </a>
-                                </div>
+                <div className="max-w-4xl mx-auto overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+                    <div className="grid grid-cols-3 bg-gray-50 border-b border-gray-200">
+                        <div className="p-6"></div>
+                        <div className="p-6 text-center font-bold text-xl text-text-main">{t('comparison_free_title')}</div>
+                        <div className="p-6 text-center font-bold text-xl text-primary">{t('comparison_pro_title')}</div>
+                    </div>
+                    
+                    {rows.map((row, index) => (
+                        <div key={index} className={`grid grid-cols-3 items-center border-b border-gray-100 last:border-0 ${index % 2 === 0 ? 'bg-white' : 'bg-secondary/20'}`}>
+                            <div className="p-4 sm:pl-8 text-sm font-medium text-text-subtle hidden sm:block">
+                                {row.pro && row.pro !== true ? (row.translate === false ? row.pro : t(row.pro as string)) : ''}
                             </div>
-                        );
-                    })}
+                            {/* Mobile label fallback - visually simplified */}
+                            <div className="p-4 sm:pl-8 text-sm font-medium text-text-subtle sm:hidden col-span-3 bg-gray-50 border-b border-gray-100">
+                                {row.pro && row.pro !== true ? (row.translate === false ? row.pro : t(row.pro as string)) : ''}
+                            </div>
+
+                            {/* Free Col */}
+                            <div className="p-4 flex justify-center col-span-1.5 sm:col-span-1 border-r border-gray-50">
+                                {row.free === false ? (
+                                    <DashIcon />
+                                ) : (
+                                    <span className="text-sm text-text-subtle text-center">
+                                         {row.translate === false ? row.free : t(row.free as string)}
+                                    </span>
+                                )}
+                            </div>
+
+                            {/* Pro Col */}
+                            <div className="p-4 flex justify-center col-span-1.5 sm:col-span-1 bg-primary/5">
+                                {row.pro ? (
+                                    row.pro === true || (row.pro as string).startsWith('comparison') ? <CheckIcon /> : <span className="text-sm font-semibold text-text-main">{row.translate === false ? row.pro : t(row.pro as string)}</span>
+                                ) : (
+                                    <DashIcon />
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="mt-10 text-center">
+                    <a 
+                        href="https://app.doughlabpro.com"
+                        className="inline-block bg-primary hover:bg-primary-hover text-white font-bold py-3 px-10 rounded-lg transition-transform transform hover:scale-105 active:scale-95 shadow-lg"
+                    >
+                        {t('comparison_cta')}
+                    </a>
                 </div>
             </div>
         </section>
     );
 };
 
-export default PricingSection;
+export default ComparisonSection;

@@ -20,41 +20,43 @@ const LevainPetSection = () => {
   }
 
   return (
-    <section id="levain-pet" className="py-20 sm:py-28 bg-secondary/50">
+    <section id="levain-pet" className="py-20 sm:py-28 bg-primary/5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight">
-            {t('pricing_plans_levain_title')}
-          </h2>
-          <p className="mt-4 text-lg text-text-subtle">
-            {t('pricing_plans_levain_headline')}
-          </p>
-        </div>
-
-        <div className="mt-12 max-w-md mx-auto">
-            <ul className="space-y-4">
-                {bullets.map((bullet: string) => (
-                    <li key={bullet} className="flex items-start text-left">
-                        <CheckIcon />
-                        <span className="text-text-subtle">
-                            {bullet}
-                        </span>
-                    </li>
-                ))}
-            </ul>
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-lg font-semibold text-text-main italic max-w-2xl mx-auto">
-            “{t('myLab_summary')}”
-          </p>
-          <div className="mt-8">
-             <a
-                href="#pricing"
-                className="inline-block bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 rounded-lg transition-transform transform hover:scale-105 active:scale-95 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
-              >
-                {t('pricing_plans_levain_cta')}
-              </a>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="hidden lg:flex justify-center">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/doughlabpro-app.firebasestorage.app/o/assets%2FLevain%20PET.png?alt=media&token=9f204c85-8d5b-4b5d-8645-e4566b7ede27"
+              alt={t('levain_imageAlt')}
+              className="rounded-lg shadow-2xl w-full max-w-md h-auto object-cover aspect-[4/3] border-4 border-white"
+            />
+          </div>
+          <div className="text-center lg:text-left">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight">
+              {t('levain_title')}
+            </h2>
+            <p className="mt-4 text-lg text-text-subtle max-w-xl mx-auto lg:mx-0">
+              {t('levain_headline')}
+            </p>
+            <div className="mt-8">
+                <ul className="space-y-4">
+                    {bullets.map((bullet: string) => (
+                        <li key={bullet} className="flex items-start text-left">
+                            <CheckIcon />
+                            <span className="text-text-subtle">
+                                {bullet}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+             <div className="mt-10">
+                 <a
+                    href="#pricing"
+                    className="inline-block bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 rounded-lg transition-transform transform hover:scale-105 active:scale-95 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
+                  >
+                    {t('pricing_plans_levain_cta')}
+                  </a>
+              </div>
           </div>
         </div>
       </div>
