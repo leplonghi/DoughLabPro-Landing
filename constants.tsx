@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type { Screenshot } from './types';
 
@@ -13,11 +12,9 @@ export const DoughLabLogo = ({ className }: { className?: string }) => (
 );
 
 export const NAV_LINKS_DATA = [
-  { href: '#value-props', key: 'nav_features' },
-  { href: '#comparison', key: 'nav_pricing' },
-  { href: '#mission', key: 'nav_mission' },
-  { href: '#demo', key: 'nav_demo' },
-  { href: '#affiliates', key: 'nav_affiliates' },
+  { href: '#how-it-works', key: 'nav_how_it_works' },
+  { href: '#features', key: 'nav_features' },
+  { href: '#pricing', key: 'nav_pricing' },
   { href: '#faq', key: 'nav_faq' },
 ];
 
